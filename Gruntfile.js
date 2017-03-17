@@ -11,39 +11,39 @@ module.exports = function(grunt) {
             'cssTargetDir': 'css',
             'jsSrcDir': 'src/js',
             'jsTargetDir': 'js',
-			'jsDependencies': [
-				'bower_components/jquery/dist/jquery.min.js',
-				'bower_components/history.js/scripts/bundled/html4+html5/jquery.history.js',
-				'bower_components/imagesloaded/imagesloaded.pkgd.min.js',
-				'bower_components/masonry/dist/masonry.pkgd.min.js',
-				'bower_components/fitvids/jquery.fitvids.js',
-				'bower_components/highlightjs/highlight.pack.min.js',
-				'bower_components/nprogress/nprogress.js',
-				'bower_components/reading-time/build/readingTime.min.js'
-			],
-			'cssDependencies': [
-				'bower_components/normalize.css/normalize.css',
-				'bower_components/highlightjs/styles/default.css',
-				'bower_components/nprogress/nprogress.css'
-			]
+      'jsDependencies': [
+        'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/history.js/scripts/bundled/html4+html5/jquery.history.js',
+        'bower_components/imagesloaded/imagesloaded.pkgd.min.js',
+        'bower_components/masonry/dist/masonry.pkgd.min.js',
+        'bower_components/fitvids/jquery.fitvids.js',
+        'bower_components/highlightjs/highlight.pack.min.js',
+        'bower_components/nprogress/nprogress.js',
+        'bower_components/reading-time/build/readingTime.min.js'
+      ],
+      'cssDependencies': [
+        'bower_components/normalize.css/normalize.css',
+        'bower_components/highlightjs/styles/default.css',
+        'bower_components/nprogress/nprogress.css'
+      ]
         },
         copy: {
-	        dev: {
+          dev: {
                 files: [{
-	                dest: 'assets/fonts/',
-	                src: '*',
+                  dest: 'assets/fonts/',
+                  src: '*',
                     cwd: 'src/fonts/',
                     expand: true
                 }]
-	        },
-	        dist: {
+          },
+          dist: {
                 files: [{
-	                dest: 'assets/fonts/',
-	                src: '*',
+                  dest: 'assets/fonts/',
+                  src: '*',
                     cwd: 'src/fonts/',
                     expand: true
-                }]		        
-	        } 
+                }]
+          }
         },
         clean: {
             dist: ['assets']
@@ -67,32 +67,32 @@ module.exports = function(grunt) {
                 }
             }
         },
-		cssmin: {
-			dev: {
-				options: {
-					shorthandCompacting: false,
-					roundingPrecision: -1,
-					sourceMap: true
-				},
-				files: {
-					'assets/<%=  config.cssTargetDir %>/dependencies.css': [
-						'<%=	config.cssDependencies %>'
-					]
-				}
-			},
-			dist: {
-				options: {
-					shorthandCompacting: false,
-					roundingPrecision: -1,
-					sourceMap: false
-				},
-				files: {
-					'assets/<%= config.cssTargetDir %>/dependencies.css': [
-						'<%= config.cssDependencies %>'
-					]
-				}
-			}
-		},
+    cssmin: {
+      dev: {
+        options: {
+          shorthandCompacting: false,
+          roundingPrecision: -1,
+          sourceMap: true
+        },
+        files: {
+          'assets/<%=  config.cssTargetDir %>/dependencies.css': [
+            '<%=  config.cssDependencies %>'
+          ]
+        }
+      },
+      dist: {
+        options: {
+          shorthandCompacting: false,
+          roundingPrecision: -1,
+          sourceMap: false
+        },
+        files: {
+          'assets/<%= config.cssTargetDir %>/dependencies.css': [
+            '<%= config.cssDependencies %>'
+          ]
+        }
+      }
+    },
         postcss: {
             options: {
                 map: true,
@@ -101,38 +101,38 @@ module.exports = function(grunt) {
                 ]
             },
             files: {
-            	src: 'assets/<%=  config.cssTargetDir %>/*.css'
+              src: 'assets/<%=  config.cssTargetDir %>/*.css'
             }
         },
-		uglify: {
-			dev: {
-				files: {
-					'assets/<%= config.jsTargetDir %>/script.js': [
-						'<%= config.jsSrcDir %>/**/*.js'
-					],
-					'assets/<%= config.jsTargetDir %>/dependencies.js': [
-						'<%= config.jsDependencies %>'
-					]
-				}
-			},
-			devlight: {
-				files: {
-					'assets/<%= config.jsTargetDir %>/script.js': [
-						'<%= config.jsSrcDir %>/**/*.js'
-					]
-				}
-			},
-			dist: {
-				files: {
-					'assets/<%= config.jsTargetDir %>/script.js': [
-						'<%= config.jsSrcDir %>/**/*.js'
-					],
-					'assets/<%= config.jsTargetDir %>/dependencies.js': [
-						'<%= config.jsDependencies %>'
-					]
-				}
-			}
-		},
+    uglify: {
+      dev: {
+        files: {
+          'assets/<%= config.jsTargetDir %>/script.js': [
+            '<%= config.jsSrcDir %>/**/*.js'
+          ],
+          'assets/<%= config.jsTargetDir %>/dependencies.js': [
+            '<%= config.jsDependencies %>'
+          ]
+        }
+      },
+      devlight: {
+        files: {
+          'assets/<%= config.jsTargetDir %>/script.js': [
+            '<%= config.jsSrcDir %>/**/*.js'
+          ]
+        }
+      },
+      dist: {
+        files: {
+          'assets/<%= config.jsTargetDir %>/script.js': [
+            '<%= config.jsSrcDir %>/**/*.js'
+          ],
+          'assets/<%= config.jsTargetDir %>/dependencies.js': [
+            '<%= config.jsDependencies %>'
+          ]
+        }
+      }
+    },
         watch: {
             css: {
                 files: '<%=  config.cssSrcDir %>/**/*.scss',
@@ -146,7 +146,7 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('build', [
-	    'clean:dist',
+      'clean:dist',
         'sass:dist',
         'cssmin:dist',
         'postcss',
