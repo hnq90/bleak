@@ -29,6 +29,9 @@
         "type": "git",
         "url": "https://github.com/zutrinken/bleak.git"
     },
+    "config": {
+        "posts_per_page": 3
+    },
     "devDependencies": {
         "autoprefixer-core": "^5.2.1",
         "grunt": "^0.4.5",
